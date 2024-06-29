@@ -1,7 +1,6 @@
 # puedo ignorar projects, users
-projects/*
+#projects/*
 Lib/*
 share/*
 build/*
 dist/*
-# Users/*
