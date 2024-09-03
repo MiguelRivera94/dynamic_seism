@@ -8,7 +8,7 @@ from statsmodels.tsa.tsatools import detrend
 import pdfkit
 import base64
 from Include.tratamiento.record import TratamientoRecord
-
+# Tags to name the graphics within an HTML file.
 image_etiquetas = [
     "Original Record for: Acceleration, Velocity and Displacement",
     "Comparison of Original and Corrected Records for: Acceleration, Velocity, and Displacement",
@@ -22,8 +22,9 @@ image_etiquetas = [
 
 class RegistroResumen:
     def __init__(self, proyectPath, tratamiento: TratamientoRecord):
-        self.tratamiento = tratamiento
-        self.proyectPath = proyectPath
+        self.tratamiento = tratamiento # Assigning the TratamientoRecord instance to self.tratamiento
+        self.proyectPath = proyectPath # Assigning the project path to self.proyectPath
+        # Setting file paths based on tratamiento.filebasename
         self.archivo_html = (
             f"{self.proyectPath}/results/html/{self.tratamiento.filebasename}.html"
         )
@@ -38,16 +39,18 @@ class RegistroResumen:
         self.salidaHtml = []
         self.salidaTemporalHtml = []
 
-        # limpieza de datos
-        plt.close("all")
+        # Data cleanup
+        plt.close("all") # Closing all matplotlib figures
 
     def saveImages(self, plt):
-        fig_nums = plt.get_fignums()
-        figs = [plt.figure(n) for n in fig_nums]
+        fig_nums = plt.get_fignums() # Getting the list of figure numbers from matplotlib
+        figs = [plt.figure(n) for n in fig_nums] # Creating a list of figure objects based on their numbers
         # print(f"figs: {figs}")
         for fig in figs:
             ruta_imagen = f"{self.proyectPath}/results/html/images/{self.tratamiento.filebasename}/{self.numImages}.png"
+            # Constructing the image path based on proyectoPath, tratamiento.filebasename, and self.numImages
             # print(ruta_imagen)
+            # Saving the figure as a PNG image to ruta_imagen
             fig.savefig(
                 ruta_imagen,
                 dpi=300,
@@ -55,21 +58,30 @@ class RegistroResumen:
             self.numImages = self.numImages + 1
 
     def procesar(self):
-        self.numImages = 1
-        print("Nombre del Registro:", os.path.basename(self.tratamiento.ruta_registro))
-        # Reading seismic record data
+        # Initializing self.numImages to 1
+        self.numImages = 1 
+        # Printing the basename of self.tratamiento.ruta_registro
+        print("Nombre del Registro:", os.path.basename(self.tratamiento.ruta_registro)) 
+         # Reads seismic record data based on self.tratamiento.presentacion_datos
+         # The acceleration data is "datosregistro"
         if self.tratamiento.presentacion_datos == "Simple Column": # For simple-column seismic records 
+            # Constructs the full path to the record file
+            # Skips specified number of rows at the beginning
             datosregistro = np.loadtxt(
                 f"{self.proyectPath}/{self.tratamiento.ruta_registro}",
                 skiprows=self.tratamiento.filas_inutiles,
             )
         elif self.tratamiento.presentacion_datos == "Multiple Column": # For multiple-column seismic records
+            # Constructs the full path to the record file
+            # Skips specified number of rows at the beginning
             datosregistro = self.getDataFromFile(
                 f"{self.proyectPath}/{self.tratamiento.ruta_registro}",
                 self.tratamiento.filas_inutiles,
             )
             # datosregistro = np.genfromtxt(f"{self.proyectPath}/{self.tratamiento.ruta_registro}", skip_header=self.tratamiento.filas_inutiles, delimiter=None, invalid_raise=False)
         elif self.tratamiento.presentacion_datos == "Time Acceleration": # For time-acceleration seismic records
+            # Constructs the full path to the record file
+            # Skips specified number of rows at the beginning
             datosregistro = np.loadtxt(
                 f"{self.proyectPath}/{self.tratamiento.ruta_registro}",
                 skiprows=self.tratamiento.filas_inutiles,
@@ -548,11 +560,12 @@ class RegistroResumen:
             100 * amplitudes_maximas_maximas / np.sum(amplitudes_maximas_maximas)
         )
         frecuencias_90 = []
+        energy_90 = []
         acumulado = 0
-        # Identify frequencies that accumulate 90%
         for a, b in zip(frecuencia_amplitud_maxima_maximas,acum_amplitudesmax):
             acumulado += b
             frecuencias_90.append(a)
+            energy_90.append(b)
             if acumulado >= 90:
                 break
         
@@ -687,39 +700,57 @@ class RegistroResumen:
         )
         # guardar el DataFrame en un archivo Excel
         # nombre_informe =  + '_report.xlsx'
-
+        # Exporting 'lista_exportar' dataframe to an Excel file specified by 'self.datos_informe',
+        # with the sheet name 'Seismic Record Report' and without including the index.
         lista_exportar.to_excel(self.datos_informe, sheet_name='Seismic Record Report', index=False)
         print(frecuencias_90)
+        print(energy_90)
+        # Assigning the value of 'frecuencias_90' to 'self.tratamiento.fregistros_90'.
         self.tratamiento.fregistros_90 = frecuencias_90
+        self.tratamiento.energy_90 = energy_90
+        # Calling the 'saveImages' method with the 'plt' object.
         self.saveImages(plt)
+        # Calling the 'RenderFiles' method.
         self.RenderFiles()
+        # Assigning the value of 'self.numImages' to 'self.tratamiento.numImages'.
         self.tratamiento.numImages = self.numImages
 
     def RenderFiles(self):
+        # Define HTML tag for page break
+        # This is used to force a page break when rendering to PDF.
         salto_linea = (
             '<div style = "display:block; clear:both; page-break-after:always;"></div>'
         )
-
+        # Append filename header to HTML output
         self.salidaHtml.append(
             f"<h3 style='font-size:18px'>Filename: {self.tratamiento.filebasename}</h3><hr>"
         )
-
+        # Open HTML div tag
         self.salidaHtml.append('<div>')
-        for i in range(self.numImages):
+        # Loop through each image to render in HTML
+        # Iterates through each image specified by self.numImages.
+        for i in range(self.numImages): 
+            # Skips the first image (assuming images are indexed starting from 1).
             if i != 0:
+                # Append image label
+                # tag for each image, specifying the path 
                 self.salidaHtml.append(f"<center><h3>{image_etiquetas[i-1]}</h3></center>")
+                # Append image tag with path and styling
                 self.salidaHtml.append(
                     f"<img src='images/{self.tratamiento.filebasename}/{i}.png' style=\"margin-bottom: 20px; border: 2px solid #000000; padding: 10px;\" width='100%'>"
                 )
                
-
+        # Close HTML div tag       
         self.salidaHtml.append("</div>")
+        # Join HTML list into a single string
+        # Joins all elements in the self.salidaHtml list into a single string (self.htmlText).
         self.htmlText = " ".join(self.salidaHtml)
-
+        # Append filename header to temporal HTML output
         self.salidaTemporalHtml.append(
             f"<h3 style='font-size:18px'>Filename: {self.tratamiento.filebasename}</h3><hr>"
         )
-
+        # Loop through each image to render in temporal HTML
+        # Iterates through each image specified by self.numImages.
         for i in range(self.numImages):
             if i != 0:
                 # self.salidaTemporalHtml.append(f"<img src='file://{self.proyectPath}/results/html/images/{self.tratamiento.filebasename}/{i}.png' width='100%'><hr>")
@@ -730,17 +761,20 @@ class RegistroResumen:
                 ) as image_file:
                     # Read the image data
                     image_data = image_file.read()
+                # Add page break for specific images
                 if i == 3 or i == 5 or i == 7:
                     self.salidaTemporalHtml.append(salto_linea)
+                # Append image label
                 self.salidaTemporalHtml.append(f"<center><h3>{image_etiquetas[i-1]}</h3></center>")
-                # Convert the image data to a Base64 string
+                # Convert image data to Base64 string and append to temporal HTML output
                 image_base64 = base64.b64encode(image_data).decode("utf-8")
                 self.salidaTemporalHtml.append(
                     f'<img src="data:image/png;base64,{image_base64}" width="100%">'
                 )
-
+        # Join temporal HTML list into a single string
         self.temporalhtmlText = " ".join(self.salidaTemporalHtml)
 
+        # Write HTML content to file
         # Save the string in the text file
         with open(self.archivo_html, "w", encoding="utf-8") as archivo:
             archivo.write(
@@ -748,7 +782,7 @@ class RegistroResumen:
             )
             archivo.write(self.htmlText)
             archivo.write("</body></html>")
-
+        # Write temporal HTML content to file
         with open(self.archivo_temporal_html, "w", encoding="utf-8") as archivo:
             archivo.write(
                 f"<html><head><title>Análisis {self.tratamiento.filebasename}</title></head><body>"
@@ -765,19 +799,23 @@ class RegistroResumen:
             "margin-left": "30mm",
         }
         try:
+            # Convert temporal HTML to PDF
             pdfkit.from_file(
                 self.archivo_temporal_html, self.archivo_pdf, options=opciones
             )
             print(f"Archivo PDF guardado en: {self.archivo_pdf}")
         except Exception as e:
+            # Handle PDF conversion error
             print(f"Error al convertir a PDF: {str(e)}")
     def getEtiquetaFourier(self):
+        # Return Fourier amplitude label based on units of acceleration
         if self.tratamiento.unidades_aceleracion == "g":
             return "Fourier Amplitudes"
         else:    
             return "Fourier Amplitudes cm/s^2"            
 
     def getMaximumAmplitude(self):
+        # Return maximum amplitude label based on units of acceleration
         if self.tratamiento.unidades_aceleracion == "g":
             return "Maximum Amplitude"
         else:    
@@ -796,13 +834,17 @@ class RegistroResumen:
     def getDataFromFile(
         self, ruta_registro, filas_inutiles, delimiter=None, invalid_raise=False
     ):
+        # Load data from file with options
         datosregistro = np.genfromtxt(
             ruta_registro,
             skip_header=filas_inutiles,
             delimiter=delimiter,
             invalid_raise=invalid_raise,
+            skip_footer=1,
         )
+        # Reshape data for processing
         datosregistro = datosregistro.reshape(-1, 1).flatten()
+        # Get data from the last row of the file for further processing
         datosregistroLastRow = np.genfromtxt(
             ruta_registro,
             skip_header=self.contadorLineas(ruta_registro) - 1,
@@ -810,4 +852,5 @@ class RegistroResumen:
             invalid_raise=invalid_raise,
         )
         datosregistroLastRow = datosregistroLastRow.reshape(-1, 1).flatten()
+        # Concatenate both arrays for final processing
         return np.concatenate((datosregistro, datosregistroLastRow), axis=0)
