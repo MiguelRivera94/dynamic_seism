@@ -55,9 +55,8 @@ https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Two
 - Download the wkhtmltopdf tool from the link provided in the table below
 
 <p align="center">
-  <img src="./visual/wkhtml_image.png" alt="Administradorwkhtmltopdf" />
+    <img src="./visual/wkhtml_image.png" alt="Administradorwkhtmltopdf" alt="Icono del Software" width="150" height="305">
 </p>
-
 
 <div align="center">
 
