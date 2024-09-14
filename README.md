@@ -37,6 +37,8 @@ The software requires the following:
 
 ## Installer
 
+Download the software installer by clicking on the following image:
+
 <p align="center">
   <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1">
     <img src="./visual/download_dynamic_seism.png" alt="Descargar Dynamic Seism" />
@@ -48,9 +50,6 @@ The software requires the following:
 https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1
 -->
 
-
-For a simpler installation, use the installer available on Google Drive. Click the link below to proceed:
-[Download Installer](https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?e=9rbmKc)
 
 ## How Install and Configurate the External Tool wkhtmltopdf?
 - Download the wkhtmltopdf tool from the link provided in the table below
