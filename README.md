@@ -326,7 +326,7 @@ Note the following:
 
 **Period:** This refers to the period of the structure and is used to calculate dynamic amplification values based on the predominant frequency content of the seismic records and the range of damping values entered by the user.
 
-For Example:
+**For Example:**
 <p align="center">
 <img src="./visual/How_calculate_dynamic_magnification/03_entrythedata_dynmagn.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
