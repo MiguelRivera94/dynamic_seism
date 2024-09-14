@@ -352,6 +352,10 @@ Once the data has been entered, click OK
 <img src="./visual/How_calculate_dynamic_magnification/06_finally_dynmagn.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+## How to view the summary result graphs obtained in the software?\
+
+
+
 ## What Files and Folders Make Up a Project?
 
 A project consists of two folders named file and results, and another file called _sismoanalyticsproject with the extension .sisproj. The file folder contains the seismic records loaded into the project.
