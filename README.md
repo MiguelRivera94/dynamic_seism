@@ -1,7 +1,7 @@
 # Software Dynamic Seism
 
 <p align="center">
-    <img src="./resources/icons/iconapp.ico" alt="Icono del Software">
+    <img src="./resources/icons/iconapp.ico" alt="Icono del Software" width="400" height="400">
 </p>
 
 ## Description
