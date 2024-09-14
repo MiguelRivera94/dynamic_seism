@@ -41,7 +41,7 @@ Download the software installer by clicking on the following image:
 
 <p align="center">
   <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1">
-    <img src="./visual/download_dynamic_seism.png" alt="Descargar Dynamic Seism" />
+    <img src="./visual/download_dynamic_seism.png" alt="Descargar Dynamic Seism" width="600" height="300" />
   </a>
 </p>
 
