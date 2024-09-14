@@ -54,9 +54,16 @@ https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Two
 ## How Install and Configurate the External Tool wkhtmltopdf?
 - Download the wkhtmltopdf tool from the link provided in the table below
 
+
 <p align="center">
-    <img src="./visual/wkhtml_image.png" alt="Administradorwkhtmltopdf" alt="Icono del Software" width="457.5" height="225">
+  <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EalVAyNhTORAsnbwS9TlDdIBuBpOhMn18fjeHBAWIlxfNA?download=1">
+    <img src="./visual/wkhtml_image.png" alt="Administradorwkhtmltopdf" width="457.5" height="225" />
+  </a>
 </p>
+
+<!--
+https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EalVAyNhTORAsnbwS9TlDdIBuBpOhMn18fjeHBAWIlxfNA?download=1
+-->
 
 <div align="center">
 
