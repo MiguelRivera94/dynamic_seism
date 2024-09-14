@@ -38,7 +38,7 @@ The software requires the following:
 ## Installer
 
 <p align="center">
-  <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?e=9rbmKc">
+  <a href="https://www.google.com">
     <img src="./visual/download_dynamic_seism.png" alt="Descargar Dynamic Seism" />
   </a>
 </p>
