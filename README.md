@@ -312,13 +312,11 @@ Next, follow these steps:
 </p>
 
 
-- Click on "Calculate Dynamic Magnification"
+- Enter the data for calculating dynamic amplification.
 
 <p align="center">
 <img src="./visual/How_calculate_dynamic_magnification/02_empty_windows.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
-
-- Enter the data for calculating dynamic amplification.
 
 Note the following:
 
@@ -355,6 +353,7 @@ Once the data has been entered, click OK
 ## How to generate and view the summary result graphs obtained in the software?
 
 The graphs that summarize the results obtained in the software are generated only when at least 11 seismic records have been loaded into a project. Additionally, it is necessary to first obtain the results of the predominant frequency content of the seismic records and the results of the dynamic amplification calculation. You can review the sections **"How to Load, Process, and Analyze the Frequency Content of the Project's Seismic Records?"** and **"How to Calculate Dynamic Magnification?"** The steps to generate these graphs are described in the following paragraphs.
+
 
 
 
