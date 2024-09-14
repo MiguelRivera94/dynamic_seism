@@ -471,7 +471,7 @@ Locate the folder containing a project developed with the software and open the 
 
 - Dynamic Magnification Curves
 
-<img src="./visual/Charts_Displayed_in_the_Software/09_Dynamic_Magnification_Curves.png" alt="copiarrutabinwkhtmltopdf" />
+<img src="./visual/Charts_Displayed_in_the_Software/9_Dynamic_Magnification_Curves.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
 ## User Manual
