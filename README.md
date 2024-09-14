@@ -37,6 +37,10 @@ The software requires the following:
 
 ## Installer
 
+<p align="center">
+  <img src="./visual/download_dynamic_seism.png.png" alt="Administradorwkhtmltopdf" />
+</p>
+
 For a simpler installation, use the installer available on Google Drive. Click the link below to proceed:
 [Download Installer](https://drive.google.com/drive/folders/1c6hJC71qAjvvw5KSGBlV3IhLuitNsQ9X?usp=sharing)
 
