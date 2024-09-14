@@ -38,11 +38,13 @@ The software requires the following:
 ## Installer
 
 <p align="center">
-  <img src="./visual/download_dynamic_seism.png.png" alt="Administradorwkhtmltopdf" />
+  <a href=https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?e=9rbmKc download>
+    <img src="./visual/download_dynamic_seism.png" alt="Administradorwkhtmltopdf" />
+  </a>
 </p>
 
 For a simpler installation, use the installer available on Google Drive. Click the link below to proceed:
-[Download Installer](https://drive.google.com/drive/folders/1c6hJC71qAjvvw5KSGBlV3IhLuitNsQ9X?usp=sharing)
+[Download Installer](https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?e=9rbmKc)
 
 ## How Install and Configurate the External Tool wkhtmltopdf?
 - Download the wkhtmltopdf tool from the link provided in the table below
