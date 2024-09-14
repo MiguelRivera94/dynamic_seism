@@ -37,7 +37,7 @@ The software requires the following:
 
 ## Installer
 
-Download the software installer by clicking on the following image:
+- Download the software installer by clicking on the following image:
 
 <p align="center">
   <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1">
@@ -52,8 +52,7 @@ https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Two
 
 
 ## How Install and Configurate the External Tool wkhtmltopdf?
-- Download the wkhtmltopdf tool from the link provided in the table below
-
+- Download the wkhtmltopdf tool by clicking on the following image:
 
 <p align="center">
   <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EalVAyNhTORAsnbwS9TlDdIBuBpOhMn18fjeHBAWIlxfNA?download=1">
