@@ -353,24 +353,38 @@ Once the data has been entered, click OK
 
 The graphs that summarize the results obtained in the software are generated only when at least 11 seismic records have been loaded into a project. Additionally, it is necessary to first obtain the results of the predominant frequency content of the seismic records and the results of the dynamic amplification calculation. You can review the sections **"How to Load, Process, and Analyze the Frequency Content of the Project's Seismic Records?"** and **"How to Calculate Dynamic Magnification?"** The steps to generate these graphs are described in the following paragraphs.
 
-
+- Click on the "Configure Summary Settings" button.
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/01clic_on_configure_summary_settings.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+- Enter the data to generate the charts that summarize the results.
 
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/02Enter_the_data_in_the_Configure_Summary_Settings_window.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+The data the user must input to generate the charts that summarize the results obtained in the software are:
+
+**Frequency Intervals:** Specifies the number of intervals used to group the predominant frequencies of seismic records, which will be used to generate histograms.
+
+**Elastic Dynamic Magnification Intervals (E. Dynamic M. Intervals):** Defines the number of intervals used to group the dynamic magnification results for the elastic range, which will be represented in a histogram.
+
+**Inelastic Dynamic Magnification Intervals (I. Dynamic M. Intervals):** Establishes the number of intervals used to classify the dynamic magnification results for the inelastic range, which will then be represented in a histogram.
+
+**For Example:**
 
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/03Example_data_in_the_Configure_Summary_Settings_window.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+- Wait for the notification that the chart generation has been completed.
+
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/04_message_summary_charts.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
+
+
 
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/05_clic_on_summary_Report_Charts.png" alt="copiarrutabinwkhtmltopdf" />
