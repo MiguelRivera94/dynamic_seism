@@ -365,14 +365,12 @@ The graphs that summarize the results obtained in the software are generated onl
 
 
 <p align="center">
-<img src="./visual/project_content/1_all_files_project.png" alt="copiarrutabinwkhtmltopdf" />
-</p>
-
-
-<p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/03Example_data_in_the_Configure_Summary_Settings_window.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+<p align="center">
+<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/04_message_summary_charts.png" alt="copiarrutabinwkhtmltopdf" />
+</p>
 
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/05_clic_on_summary_Report_Charts.png" alt="copiarrutabinwkhtmltopdf" />
