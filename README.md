@@ -392,8 +392,7 @@ The data the user must input to generate the charts that summarize the results o
 
 ## What Files and Folders Make Up a Project?
 
-A project also consists of two folders named file and results, as well as two files called definitions_sismoanalyticsproject and _sismoanalyticsproject. The file folder contains the seismic records loaded into the project.
-
+A project also consists of two folders named file and results, as well as two files called definitions_sismoanalyticsproject and _sismoanalyticsproject.
 <p align="center">
 <img src="./visual/project_content/1_all_files_project.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
