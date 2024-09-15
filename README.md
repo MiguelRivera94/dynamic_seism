@@ -390,39 +390,6 @@ The data the user must input to generate the charts that summarize the results o
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/05_clic_on_summary_Report_Charts.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
-
-
-<p align="center">
-<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/06_bar.png" alt="copiarrutabinwkhtmltopdf" />
-</p>
-
-
-<p align="center">
-<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/07_frequency_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
-</p>
-
-<p align="center">
-<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/08_elastic_dynamic_magnification_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
-</p>
-
-<p align="center">
-<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/09_inelastic_dynamic_magnification_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
-</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## What Files and Folders Make Up a Project?
 
 A project consists of two folders named file and results, and another file called _sismoanalyticsproject with the extension .sisproj. The file folder contains the seismic records loaded into the project.
@@ -540,15 +507,40 @@ Locate the folder containing a project developed with the software and open the 
 <img src="./visual/Charts_Displayed_in_the_Software/9_Dynamic_Magnification_Curves.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+- Bar Chart generated in the Dynamic Seism software
+
+<p align="center">
+<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/06_bar.png" alt="copiarrutabinwkhtmltopdf" />
+</p>
+
+
+- Combined chart of predominant frequencies: Histogram, probability distribution, Percentiles (16, 50, 84), Mean, and Standard Deviation.
+
+<p align="center">
+<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/07_frequency_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
+</p>
+
+- Combined chart of Elastic Dynamic Magnification: Histogram, probability distribution, Percentiles (16, 50, 84), Mean, and Standard Deviation.
+
+<p align="center">
+<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/08_elastic_dynamic_magnification_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
+</p>
+
+- Combined chart of Inelastic Dynamic Magnification: Histogram, probability distribution, Percentiles (16, 50, 84), Mean, and Standard Deviation.
+
+<p align="center">
+<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/09_inelastic_dynamic_magnification_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
+</p>
+
+<!--
 ## User Manual
 
 You can download the User Manual by clicking on the following link:
 
 - [Download the User Manual]()
+-->
 
 ## Video for Installation
 
 You can view and download the software installation video at the following link:
 [Video](https://drive.google.com/file/d/1CZogRnWWqlSv9tIE6zEUN0bcUSwRPpmZ/view?usp=drive_link)
-
-
