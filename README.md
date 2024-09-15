@@ -360,8 +360,7 @@ The graphs that summarize the results obtained in the software are generated onl
 
 
 <p align="center">
-<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/02Enter_the_data_in_the_Configure_Summary_Settings_window.png
-" alt="copiarrutabinwkhtmltopdf" />
+<img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/02Enter_the_data_in_the_Configure_Summary_Settings_window.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
 
