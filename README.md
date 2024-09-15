@@ -384,15 +384,18 @@ The data the user must input to generate the charts that summarize the results o
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/04_message_summary_charts.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
-
-
+- Click on the "Summary Report Charts" tab.
+  
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/05_clic_on_summary_Report_Charts.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+
+
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/06_bar.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
+
 
 <p align="center">
 <img src="./visual/How_to_generate_and_view_the_summary_result_graphs_obtained_in_the_software/07_frequency_gaussian_distribution.png" alt="copiarrutabinwkhtmltopdf" />
