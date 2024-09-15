@@ -8,6 +8,26 @@
 
 Interactive Software for Dynamic Magnification Calculation of Single Degree of Freedom Structures in the Elastic and Inelastic Range Based on the Predominant Frequency Content of Seismic Records.
 
+
+## Installation Requirements
+
+The software requires the following:
+- Operating System: Windows 10 or higher.
+- Available Disk Space: 300 MB.
+- Recommended Screen Resolution: 1920x1080 pixels.
+- Installation of External Tools: wkhtmltopdf.
+
+<!--
+## Installation Requirements
+
+The software requires the following:
+- Operating System: Windows 10 or higher.
+- Recommended Processor: Intel Core i7.
+- Available Disk Space: 530 MB.
+- Recommended Screen Resolution: 1920x1080 pixels.
+- Installation of External Tools: wkhtmltopdf.
+-->
+
 ## Functionalities
 
 - Process Multiple Seismic Records (Baseline Correction and Filtering of Multiple Seismic Records).
@@ -24,16 +44,6 @@ Interactive Software for Dynamic Magnification Calculation of Single Degree of F
 - Generate reports in PDF format with all graphs.
 - Generate reports in Excel.
 
-<!--
-## Installation Requirements
-
-The software requires the following:
-- Operating System: Windows 10 or higher.
-- Recommended Processor: Intel Core i7.
-- Available Disk Space: 530 MB.
-- Recommended Screen Resolution: 1920x1080 pixels.
-- Installation of External Tools: wkhtmltopdf.
--->
 
 ## Installer
 
