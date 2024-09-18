@@ -64,7 +64,7 @@ https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Two
 - Download the wkhtmltopdf tool by clicking on the following image:
 
 <p align="center">
-  <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1">
+  <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EalVAyNhTORAsnbwS9TlDdIBuBpOhMn18fjeHBAWIlxfNA?download=1">
     <img src="./visual/wkhtml_image.png" alt="Administradorwkhtmltopdf" width="457.5" height="225" />
   </a>
 </p>
@@ -559,4 +559,9 @@ You can download the User Manual by clicking on the following link:
 ## Video for Installation
 
 You can view and download the software installation video at the following link:
-[Video](https://drive.google.com/file/d/1CZogRnWWqlSv9tIE6zEUN0bcUSwRPpmZ/view?usp=drive_link)
+[Video](https://puceeduec-my.sharepoint.com/:v:/g/personal/meriverabo_puce_edu_ec/EQW5ooVRLFlFh4xyy14kCcYBj21V6zmJlNoDj3jcgiUeXg?e=AQzmLx&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+
+
+
+
