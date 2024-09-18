@@ -152,6 +152,12 @@ https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EalVAy
 <img src="./visual/run_as_administrator_dynamicseism.png" alt="copiarrutabinwkhtmltopdf" />
 </p>
 
+- Accept the license terms and click on Next
+<p align="center">
+<img src="./visual/accept_the_license_terms_and_clic_next.png" alt="copiarrutabinwkhtmltopdf" />
+</p>
+
+
 - Select the installation folder path for the software and click on Next
 
 <p align="center">
