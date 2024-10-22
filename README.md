@@ -50,10 +50,12 @@ The software requires the following:
 - Download the software installer by clicking on the following image:
 
 <p align="center">
-  <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1">
+  <a href="https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EfxxPUOhf5dAi91r6gSuohgBJ_zwU8Uq53lI_8E1WxLG7g?download=1">
     <img src="./visual/download_dynamic_seism.png" alt="Descargar Dynamic Seism" width="600" height="300" />
   </a>
 </p>
+
+
 
 <!--
 https://puceeduec-my.sharepoint.com/:u:/g/personal/meriverabo_puce_edu_ec/EX8Twoe_aGpIqtDKmPnoF6MBTavRt1THmwoqVWpqfrq4Bg?download=1
