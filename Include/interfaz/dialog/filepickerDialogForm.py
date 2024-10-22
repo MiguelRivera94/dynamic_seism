@@ -25,8 +25,6 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
 
     def body(self,master):
         # Set the width of the dialog box
-        #self.geometry("1024x768+{}+{}".format(master.winfo_rootx()+50, master.winfo_rooty()+50))
-        #self.geometry("1024x768+%d+%d" % (master.winfo_rootx()+50, master.winfo_rooty()+50))       
         # Initial setup of the main window
         dialog_width = 1024
         dialog_height = 768
@@ -35,7 +33,7 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
         screen_width = master.winfo_screenwidth()
         screen_height = master.winfo_screenheight()
 
-        # Calculate position to center the dialogo
+        # position to center the dialog
         x_position = (screen_width - dialog_width // 2) // 2
         y_position = (screen_height - dialog_height // 2) // 2     
 
@@ -138,8 +136,6 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
         self.realiza_correccion_combo = ttk.Combobox(self.framepropiedades, values=tipo_realiza_correccion, state="readonly")
         self.realiza_correccion_combo.grid(row=5, column=1)
 
-        #self.grado_cbaseline_entry = tk.Entry(self.framepropiedades, width=23)
-        #self.grado_cbaseline_entry.grid(row=6, column=1)
         tipo_grado_cbaseline = [0,1,2,3,4]
         self.grado_cbaseline_combo = ttk.Combobox(self.framepropiedades, values=tipo_grado_cbaseline, state="readonly")
         self.grado_cbaseline_combo.grid(row=6, column=1)
@@ -173,12 +169,11 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
         # End of control input
 
         self.frameVisor = tk.Frame(self.frame1)
-        #self.frameVisor.pack(fill=tk.BOTH, expand=True)
         self.frameVisor.pack(fill=tk.X)
         self.frameVisor.configure(height=40)
         
 
-        # Create a Text widget to display the contents
+        # A text widget will be created to display the content
         self.visorText = tk.Text(self.frameVisor, wrap=tk.NONE, state=tk.DISABLED)
         self.visorText.pack(fill="both", expand=True)
 
@@ -196,7 +191,8 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
 
 
 
-        # Create a Treeview
+        # Create a Treatview to summarize the data entered by the user 
+        # regarding seismic record processing and analysis
         columnas = ["File","Data Presentation:", "Useless Rows:", "Acceleration Units:",
             "Conversion Factor:", "Dt:", "Baseline Correction:",
             "Baseline C. Degree:", "Filter Type:", "Cutoff Frequency 1  (Hz):",
@@ -209,8 +205,6 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
             self.treeview.column(col, width=100)  # Puedes ajustar el ancho según tus necesidades
 
         # Agregar el Treeview a un scroll vertical
-        #scroll_y = ttk.Scrollbar(self.frame2, orient="vertical", command=self.treeview.yview)
-        #self.treeview.configure(yscrollcommand=scroll_y.set)
 
         # Add the Treeview to a horizontal scrollbar
         scroll_x = ttk.Scrollbar(self.frame2, orient="horizontal", command=self.treeview.xview)
@@ -244,20 +238,13 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
             self.selectedIndex = 0 # Select the first treatment
             self.treeview_load()   # Load treatments into the Treeview
         
-        # Botón "Cerrar" en la ventana modal
-        #self.boton_cerrar = tk.Button(self.frame_inferior, text="Cerrar", command=self.closeForm )
-        #self.boton_cerrar.pack(side="right", padx=10)
-
-        # Botón "Cerrar" en la ventana modal
-        #self.boton_aceptar = tk.Button(self.frame_inferior, text="Aceptar", command=self.closeReturnOKForm )
-        #self.boton_aceptar.pack(side="right", padx=10)
     def apply(self):
-        # This method is called when the "OK" button is pressed
+        # It is activated when we click ok
         self.closeReturnOKForm() # Call the method to close the form and return OK status
  
 
     def buscarUbicacion(self):
-        # Open a dialog to select a directory and store the selected path in self.proyectDirectory
+        # select a directory and store the selected path in self.proyectDirectory
         self.proyectDirectory = tkinter.filedialog.askdirectory()
         # Bring the master window to focus
         master.focus_force()
@@ -273,13 +260,13 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
         )
         # If files are selected
         if archivos:
-            # Iterate over the selected files
+            # Iterate over the seismic records files
             for file_path in archivos:
-                # Extract the file name from the file path
+                # Obtain the name of the seismic record through the path of this record
                 file_name = os.path.basename(file_path)
-                # Create a new record with the file path and file name
+                # Create a new seismic record file based on its name and path
                 nuevoRegistro = TratamientoRecord(file_path,file_name)
-                # Append the new record to the treatments list
+                # Append the new seismic record to the treatments list
                 self.tratamientos.append(nuevoRegistro)
                 # Print the selected file path
                 print("Archivo seleccionado:", file_path)  
@@ -290,7 +277,7 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
     def treeview_load(self, selectIndex = None):     
         # Clean the Treeview before loading new data
         self.treeview_clean()   
-        # Insert each treatment into the Treeview
+        # Enter the user's data into the TreatView in the Load Seismic Records module
         for tratamiento in self.tratamientos:
             self.treeview.insert('', 'end', values=(
                 tratamiento.filebasename, tratamiento.presentacion_datos, tratamiento.filas_inutiles, tratamiento.unidades_aceleracion,
@@ -331,7 +318,7 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
         ruta_archivo = self.currentTratamiento.ruta_registro
         if self.currentTratamiento.isNew == False:
             ruta_archivo = self.proyectPath + self.directory_separator + self.currentTratamiento.ruta_registro
-        # Read and display the contents of the file in the text viewer
+        # Allows you to view the contents of a seismic record in a text viewer
         with open(ruta_archivo, 'r') as file:
             text = file.read()
             self.visorText.config(state=tk.NORMAL)  # Habilitar la edición temporalmente
@@ -365,9 +352,6 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
             self.dt_entry.insert(0, "")
         # Set the 'realiza_correccion' combo box to the value from the current treatment
         self.realiza_correccion_combo.set(self.currentTratamiento.realiza_correccion)
-        # Set the 'grado_cbaseline' combo box to the value from the current treatment
-        #self.grado_cbaseline_entry.delete(0, tk.END)
-        #self.grado_cbaseline_entry.insert(0, str(self.currentTratamiento.grado_cbaseline))
         self.grado_cbaseline_combo.set(self.currentTratamiento.grado_cbaseline)
         # Set the 'type_filtro' combo box to the value from the current treatment
         self.type_filtro_entry_combo.set(self.currentTratamiento.type_filtro)
@@ -406,9 +390,9 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
         self.boton_eliminar.config(state=tk.DISABLED)      
 
     def treeview_remove_item(self):
-        # Get the currently selected item in the Treeview
+        # Select a seismic record file on Treeview
         selected_iid = self.treeview.focus()   
-        # Get the index of the selected item     
+        # Obtain the number that identifies the selected seismic record 
         item_index = self.treeview.index(selected_iid)
         # Retrieve the tratamiento (record) from the list of tratamientos
         deleted_tratamiento = self.tratamientos[item_index]
@@ -454,28 +438,28 @@ class FilerPickerDialogForm(tk.simpledialog.Dialog):
     def guardar_datos(self):
         # Obtener los valores
         con_errores = False # Flag to track if there are errors.
-        # Checks if input is not an integer.
+        # Logic to check if it's not an integer value
         if es_entero(self.filas_inutiles_entry.get()) == False: 
             con_errores = True
-        # Checks if input is not a float
+        # Logic to check if it's not an float value
         if es_flotante(self.factor_conversion_entry.get()) == False: 
             con_errores = True
-        # Checks if input is not a float.
+        # Logic to check if it's not an float value
         if es_flotante(self.dt_entry.get()) == False: 
             con_errores = True
-        # Checks if input is not an integer.
+        # Logic to check if it's not an integer value
         if es_entero(self.grado_cbaseline_combo.get()) == False: 
             con_errores = True
-        # Checks if input is not a float.
+        # Logic to check if it's not an float value
         if es_flotante(self.fcorte1_entry.get()) == False: 
             con_errores = True
-        # Checks if input is not a float.
+        # Logic to check if it's not an float value
         if es_flotante(self.fcorte2_entry.get()) == False: 
             con_errores = True
-        # Checks if input is not an integer.
+        # Logic to check if it's not an integer value
         if es_entero(self.grado_filtro_entry.get()) == False: 
             con_errores = True
-        # Checks if input is not an integer.
+        # Logic to check if it's not an integer value
         if es_entero(self.num_ventanas_entry.get()) == False: 
             con_errores = True
             

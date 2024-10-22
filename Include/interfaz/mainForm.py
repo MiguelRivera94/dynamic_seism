@@ -97,12 +97,12 @@ class MainForm(tk.Tk):
         self.initialize()
 
     def initialize(self):
-        # Create the main menu bar
+        # Generate the main menu bar in the graphical interface
         self.mainMenu = tk.Menu(self)
-        # Attach the menu bar to the main window
+        # Add the menu bar to the main window of the software
         self.config(menu=self.mainMenu)
 
-        # Crear un menú "Archivo"
+        # Create a menú "File"
         self.menu_archivo = tk.Menu(self.mainMenu)
         # Add "File" to the menu bar
         self.mainMenu.add_cascade(label="File", menu=self.menu_archivo)
@@ -121,7 +121,7 @@ class MainForm(tk.Tk):
         # Create a top frame for project information
         self.frame_superior = tk.Frame(self)
         self.frame_superior.pack(side="top", fill="x")  # Pack the frame at the top
-        # Label for "Project Location"
+        # Generate a Label for "Project Location"
         self.label1 = tk.Label(
             self.frame_superior,
             text="Project Location",
@@ -132,7 +132,7 @@ class MainForm(tk.Tk):
         )
         # Place the label in the grid
         self.label1.grid(row=1, column=1)
-        # Label to display the project directory
+        # Generate a Label to display the project directory
         self.locationproyectoLabel = tk.Label(
             self.frame_superior,
             text=self.proyectDirectory,
@@ -217,11 +217,11 @@ class MainForm(tk.Tk):
         self.leftframe = tk.Frame(self)
         # Pack the frame to the left
         self.leftframe.pack(side=tk.LEFT, fill=tk.Y)
-        # Create a listbox to display files
+        # Seismic records are shown in the following listbox
         self.archivoslistbox = tk.Listbox(self.leftframe, width=50)
         # Pack the listbox at the top
         self.archivoslistbox.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        # Bind selection event to handler
+        # Associate the selection event with a handler
         self.archivoslistbox.bind(
             "<<ListboxSelect>>", self.archivoslistbox_on_listbox_select
         )
@@ -300,15 +300,15 @@ class MainForm(tk.Tk):
         self.loadPage("home")  # Load the home page
         self.webbrowser.pack(
             fill="both", expand=True
-        )  # Attach the HtmlFrame widget to the parent window and allow expansion
+        )  
 
     def recursive_overwrite(self, src, dest, ignore=None):
         # Check if the source path is a directory
         if os.path.isdir(src):
-            # If the destination path does not exist, create it
+            # In the event that the path does not exist, it is created
             if not os.path.isdir(dest):
                 os.makedirs(dest)
-            # List all files and directories in the source directory
+            # List all directories on "files"
             files = os.listdir(src)
             # Determine which files to ignore, if an ignore function is provided
             if ignore is not None:
@@ -318,7 +318,7 @@ class MainForm(tk.Tk):
                 ignored = set()
             # Iterate over all files and directories in the source
             for f in files:
-                # If the file is not in the ignored set, recursively copy it
+                # If the file is on the ignore list, then copy it
                 if f not in ignored:
                     self.recursive_overwrite(
                         os.path.join(src, f), os.path.join(dest, f), ignore
@@ -328,7 +328,7 @@ class MainForm(tk.Tk):
             shutil.copyfile(src, dest)
 
     def buscarUbicacion(self):
-        # Open a dialog to select a directory and store the selected path
+        # Select the directory and store the path using a dialog box
         directorioTemporal = filedialog.askdirectory()
         # self.focus_force()
         print(self.proyectDirectory)
@@ -341,7 +341,7 @@ class MainForm(tk.Tk):
             if self.proyectName != "":
                 # Construct the full path to the project directory
                 ruta_directorio = directorioTemporal + "/" + self.proyectName
-                # Check if the directory already exists and is a directory
+                # Check if a directory exists and if it is correct
                 if os.path.exists(ruta_directorio) and os.path.isdir(ruta_directorio):
                     # Show an alert if the directory already exists
                     messagebox.showinfo(
@@ -406,7 +406,7 @@ class MainForm(tk.Tk):
         self.eliminar_archivos_y_carpetas(rutas_a_eliminar)
 
     def boton_eliminar_click(self):
-        # Get the index of the currently selected item in the listbox
+        # Identifies the number of the selected file in the list box
         selected_index = self.archivoslistbox.index("active")
         # Check if there is a valid selection and if there are any items in the 'tratamientos' list
         if selected_index >= 0 and len(self.tratamientos) > 0:
@@ -429,10 +429,10 @@ class MainForm(tk.Tk):
                 self.llenarListBox()
                 # Save the updated project configuration
                 self.saveconfigproject()
-                # Print a message indicating the deletion was completed
+                # generates a message notifying that the file was deleted
                 print("Eliminar")
             else:
-                # Print a message indicating the deletion was canceled
+                # generates a message notifying that a file deletion has been canceled
                 print("Cancelar")
 
     # Function for the "New" command in the menu
@@ -524,7 +524,7 @@ class MainForm(tk.Tk):
                 self.proyectPath = directorio
                 # Set the project directory to the parent directory of the project path
                 self.proyectDirectory = os.path.normpath(f"{directorio}/../")
-                # Get the name of the last folder in the project path
+                # Capture the name of the last folder within a project
                 nombre_ultimo_carpeta = os.path.basename(directorio)
                 # Set the project name to the last folder name
                 self.proyectName = nombre_ultimo_carpeta
@@ -586,13 +586,13 @@ class MainForm(tk.Tk):
                     self.configure_summary_settings.config(state="normal")
                 # Fill the list box with the treatments
                 self.llenarListBox()
-                # Enable the selector button
+                # Activate the button that allows selection
                 self.boton_selector.config(state="normal")
-                # Enable the "Save as..." menu option
+                # Activate the "Save as..." menu option
                 self.menu_archivo.entryconfigure(3, state="normal")
-                # Enable the delete button
+                # Activate the delete button
                 self.boton_eliminar.config(state="normal")
-                # Enable the dynamic calculation button
+                # Activate the dynamic calculation button
                 self.calcular_dynamic.config(state="normal")
 
                 # Additional actions can be performed here based on the application requirements
@@ -630,7 +630,7 @@ class MainForm(tk.Tk):
             self.recursive_overwrite(old_directory, self.proyectPath)
 
     def salir(self):
-        # Exit the application
+        # Exit the Dynamic Seism
         self.quit()
 
     def show(self):
@@ -645,7 +645,7 @@ class MainForm(tk.Tk):
         if self.seleccion_var.get() == "home":
             self.seleccion_var.set("graph1")
         # Load the page based on the current selection
-        if self.seleccion_var.get() != 'graph4':
+        if self.seleccion_var.get() != 'graph3':
             self.loadPage(self.seleccion_var.get())
 
     def archivoslistbox_on_listbox_select(self, event):
@@ -765,8 +765,8 @@ class MainForm(tk.Tk):
         json_file_path = f"{self.proyectPath}/_sismoanalyticsproject.pkl"
         # Serializar el objeto a un archivo
         # if existe json_file_path eliminarlo7
-        
-        #pickle liberia para serializar objetos de python
+        # Pickle library to save the information of Python objects
+        # Pickle libreria para guardar la informacion de los objetos de python
         with open(json_file_path, "wb") as file:
             pickle.dump(saveProjectTemp, file)
         
@@ -900,8 +900,8 @@ class MainForm(tk.Tk):
                     summary.procesar()
                     #self.loadPage("graph3")
                     # si self.nav_opcion3 esta e checked load page
-                    if self.seleccion_var.get() == 'graph4':
-                        self.loadPage("graph4")
+                    if self.seleccion_var.get() == 'graph3':
+                        self.loadPage("graph3")
                     messagebox.showinfo("Processing", "Summary processing has finished")
                     print("configure_summary_settings_click")
             else:

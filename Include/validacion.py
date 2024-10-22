@@ -1,24 +1,24 @@
 from pprint import pprint
 def es_entero(cadena):
-  # Check if the input string is empty
+  # Logic to check if the user did not enter any data in the software
   if cadena == "":
       return False
   try:
-    # Attempt to convert the string to an integer
+    # Convert a string of characters to integers
     int(cadena)
     return True
   except ValueError:
-    # Return False if conversion to integer raises a ValueError
+    # Close the logic if there is an error when converting from string to integers
     return False
   
 def es_flotante(cadena):
-  # Check if the input string is empty
+  # Logic to check if the user did not enter any data in the software
   if cadena == "":
       return False  
   try:
-    # Attempt to convert the string to a float
+    # Convert a string of characters to floats
     float(cadena)
     return True
   except ValueError:
-    # Return False if conversion to float raises a ValueError
+    # Close the logic if there is an error when converting from string to floats
     return False

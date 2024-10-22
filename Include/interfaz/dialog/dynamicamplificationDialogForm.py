@@ -16,22 +16,22 @@ class DynamicAmplificationDialogo(tk.simpledialog.Dialog):
         super().__init__(parent, title)
 
     def body(self, master):
-        # Create labels and entry widgets for user input
+        # Create the labels of the damping 1 for the calculation of dynamic magnification in the Dynamic Seism software
         tk.Label(master, text="ζ1:").grid(row=0, column=0)
         self.zeta1_entry = tk.Entry(master)
         self.zeta1_entry.grid(row=0, column=1)
         tk.Label(master, text="Example: 0.05").grid(row=0, column=2, sticky="w")
-        # Create labels and entry widgets for user input
+        # Create the labels of the damping 2 for the calculation of dynamic magnification in the Dynamic Seism software
         tk.Label(master, text="ζ2:").grid(row=1, column=0)
         self.zeta2_entry = tk.Entry(master)
         self.zeta2_entry.grid(row=1, column=1)
         tk.Label(master, text="Example: 0.2").grid(row=1, column=2, sticky="w")
-        # Create labels and entry widgets for user input
+        # Create the labels of the delta damping for the calculation of dynamic magnification in the Dynamic Seism software
         tk.Label(master, text="Δζ:").grid(row=2, column=0)
         self.delta_entry = tk.Entry(master)
         self.delta_entry.grid(row=2, column=1)
         tk.Label(master, text="Example: 0.01").grid(row=2, column=2, sticky="w")
-        # Create labels and entry widgets for user input
+        # Create the labels of the period for the calculation of dynamic magnification in the Dynamic Seism software
         tk.Label(master, text="Period (s):").grid(row=3, column=0)
         self.period_entry = tk.Entry(master)
         self.period_entry.grid(row=3, column=1)
@@ -51,9 +51,15 @@ class DynamicAmplificationDialogo(tk.simpledialog.Dialog):
             con_errores = True
         if es_flotante(self.period_entry.get()) == False:
             con_errores = True
-
-        if int(self.period_entry.get()) <= 0:
-            messagebox.showinfo("Alert", "The period must be greater than zero")
+        else:
+        # Comprobar si el período es mayor que cero después de convertirlo a float
+            if float(self.period_entry.get()) <= 0:
+                con_errores = True
+                messagebox.showinfo("Alert", "The period must be greater than zero")
+                return
+                
+        #if int(self.period_entry.get()) <= 0:
+            #messagebox.showinfo("Alert", "The period must be greater than zero")
         # If no validation errors, convert and set the values to instance variables
         if con_errores == False:
             self.zeta1.set(float(self.zeta1_entry.get()))

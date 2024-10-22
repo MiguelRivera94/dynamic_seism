@@ -19,7 +19,7 @@ class DynamicAmplification:
         self.tratamiento = tratamiento
         # Assign the project path to the instance variable 'self.proyectPath'
         self.proyectPath = proyectPath
-         # Flatten the fregistros_90 attribute from the tratamiento instance and convert to a NumPy array
+         # Flatten the fregistros_90 attribute from the tratamiento instance and convert to an array
         self.fregistros_90 = np.array(
             self.tratamiento.fregistros_90, dtype=np.float64
         ).flatten()
@@ -65,7 +65,6 @@ class DynamicAmplification:
         fig_nums = plt.get_fignums()
         # Create a list of figure objects based on the figure numbers
         figs = [plt.figure(n) for n in fig_nums]
-        # print(f"figs: {figs}")
         # Loop through each figure object
         for fig in figs:
             # Construct the file path for saving the image
@@ -244,7 +243,7 @@ class DynamicAmplification:
             #########################################################################################################################################################################################
             # Set the figure height for dynamic magnification
             hsize_dm = 5.7
-            # Create a new figure with specified size and resolution
+            # Create a Python Chart of Dynamic Magnification Charts adjusting resolution dpi = 300 and size
             plt.figure(figsize=(11, hsize_dm), dpi=300)
             # Calculate the vertical line position
             linea_vertical = self.fregistros_90[j] / (self.tratamiento.Tevaluado**-1)
@@ -273,7 +272,7 @@ class DynamicAmplification:
                     label=(
                         "ζ = {:.2%}".format(zeta[i])
                         + "; "
-                        + "ψ_L = {:.3}".format(Rd_evaluado_lineal[i, j])
+                        + "ψ_E = {:.3}".format(Rd_evaluado_lineal[i, j])
                     ),
                     color=color2,
                 )
@@ -284,13 +283,30 @@ class DynamicAmplification:
                     label=(
                         "ζ = {:.2%}".format(zeta[i])
                         + "; "
-                        + "ψ_NL = {:.3}".format(Rd_evaluado_nolineal[i, j])
+                        + "ψ_I = {:.3}".format(Rd_evaluado_nolineal[i, j])
                     ),
                     color=color1,
                 )
 
             # Check if the vertical line position is within a specific range
             if 0.7 <= linea_vertical < 0.99:
+                # Annotate the plot with a label for the vertical line
+                plt.annotate(
+                    "Dynamic Magnification for W/Wn = {:.2f}".format(linea_vertical),
+                    # Position of the point to label
+                    xy=(
+                        linea_vertical,
+                        plt.ylim()[1],
+                    ),  
+                    xytext=(-30, -30),  # Text offset
+                    textcoords="offset points",  # Coordinate type for the offset
+                    verticalalignment="top",
+                    horizontalalignment="right",
+                    color="dimgray",
+                    fontsize=10,
+                    rotation="vertical",
+                )
+            elif 2.2 <= linea_vertical < 2.5:
                 # Annotate the plot with a label for the vertical line
                 plt.annotate(
                     "Dynamic Magnification for W/Wn = {:.2f}".format(linea_vertical),
@@ -310,7 +326,7 @@ class DynamicAmplification:
             else:
                 # Annotate the plot with a label for the vertical line (different format)
                 plt.annotate(
-                    "Dynamic Magnification for W/Wn = {:.3f}".format(linea_vertical),
+                    "Dynamic Magnification for W/Wn = {:.2f}".format(linea_vertical),
                     xy=(
                         linea_vertical,
                         plt.ylim()[1],
@@ -323,17 +339,17 @@ class DynamicAmplification:
                     fontsize=10,
                     rotation="vertical",
                 )
-            # Set the X-axis label
+            # Setting the Abscissa Axis for the 'W/Wn' label
             plt.xlabel("W/Wn", fontsize=15)
-            # Set the Y-axis label
+            # Setting the Y-axis for the 'Dynamic Magnification'label
             plt.ylabel("Dynamic Magnification ψ", fontsize=10)
             #Tn(s) = {:.3f};f(Hz) = {:.3f};W/Wn = {:.3f}".format(self.tratamiento.Tevaluado, self.fregistros_90[j], linea_vertical))
             # Format and set the plot title
             title_graph = "Dyn. Mag. for Tn(s)={:.2f};f(Hz)={:.2f};W/Wn={:.2f}".format(self.tratamiento.Tevaluado, self.fregistros_90[j], linea_vertical)
             plt.title(title_graph, fontsize=11)
-            # Add the legend to the plot
+            # Add an ID legend to the chart
             plt.legend(loc="upper left", bbox_to_anchor=(1, 1), fontsize=12)    ###############################################
-            # Set the maximum number of labels to display on the legend for one column
+            # num_max_etiquetas represents the maximum number of IDs that can be displayed in the legends section on the chart when it is a single column
             num_max_etiquetas = 40 # This value is adjusted based on hsize_dm by trial and error  (33)
             # This condition is used to avoid division by zero
             if self.tratamiento.deltazeta != 0:
@@ -349,7 +365,7 @@ class DynamicAmplification:
             # Add the legend to the plot with specified location, font size, and number of columns
             plt.legend(loc='upper left', bbox_to_anchor=(1, 1), fontsize=tamano_letra, ncol=num_col_etiqueta)    ############ cambiar a 10
             # Set the X-axis limit slightly beyond the maximum value in rw_grafico
-            plt.xlim(0,np.max(rw_grafico[:, j])+0.05)
+            plt.xlim(0,np.max(rw_grafico[:, j])+0.1)
             
             # Guardar la imagen en un archivo en el directorio destino
             # nombre_archivo = os.path.join(directorio_destino, f"grafico_{j}.png")
@@ -428,16 +444,16 @@ class DynamicAmplification:
         ruta_excel = self.datos_informe_da
         # Create an ExcelWriter object
         with pd.ExcelWriter(ruta_excel, engine="openpyxl") as excel_writer:
-            # Convert DataFrames to separate sheets in the Excel file
+            # Separate dynamic magnification results into different sheets
             df_grafico_lineal.to_excel(
-                excel_writer, sheet_name="Linear Dynamic M. Curves", index=False
+                excel_writer, sheet_name="Elastic Dynamic M. Curves", index=False
             )
             df_grafico_nolineal.to_excel(
-                excel_writer, sheet_name="Nonlinear Dynamic M. Curves", index=False
+                excel_writer, sheet_name="Inelastic Dynamic M. Curves", index=False
             )
-            df_lineal.to_excel(excel_writer, sheet_name="Dynamic Magn. Fact. - L")
+            df_lineal.to_excel(excel_writer, sheet_name="Dynamic Magn. Fact. - E")
             df_nolineal.to_excel(
-                excel_writer, sheet_name="Dynamic Magn. Fact. - NL"
+                excel_writer, sheet_name="Dynamic Magn. Fact. - I"
             )
 
             # Get the ExcelWriter object
@@ -451,7 +467,7 @@ class DynamicAmplification:
             for sheet_name in sheets:
                 # Get the specific sheet object from the workbook
                 sheet = workbook[sheet_name]
-                # Iterate over each set of column cells in the current sheet
+                # Perform an iterative process for each of the columns in the Excel sheet that contains the dynamic magnification results
                 for column_cells in sheet.columns:
                     # Initialize the maximum cell length to 0
                     max_length = 0
@@ -484,13 +500,6 @@ class DynamicAmplification:
         # Read all sheets from the second file into a dictionary of DataFrames
         hojas_archivo2 = pd.read_excel(archivo2, sheet_name=None)
 
-        # Crear un nuevo archivo Excel para almacenar el resultado
-        #with pd.ExcelWriter(self.datos_informe, engine='openpyxl') as writer:
-        #    for nombre_hoja, df in hojas_archivo1.items():
-        #        df.to_excel(writer, sheet_name=nombre_hoja, index=False)
-        #    for nombre_hoja, df in hojas_archivo2.items():
-        #        df.to_excel(writer, sheet_name=nombre_hoja, index=False)   
-
         self.tratamiento.numImagesDynamic = self.numImagesDynamic
         self.tratamiento.Rd_evaluado_lineal = Rd_evaluado_lineal
         self.tratamiento.Rd_evaluado_nolineal = Rd_evaluado_nolineal
@@ -511,7 +520,6 @@ class DynamicAmplification:
         # Iterate through each image index
         for i in range(self.numImagesDynamic):
             if i != 0:
-                #self.salidaHtml.append(f"<center><h3>{image_etiquetas[i-1]}</h3></center>") adfsdgfadsfadsfasdfasdfasdfadfasdfsadfadsf
                 # Append image tag with source path and styling to main HTML output
                 self.salidaHtml.append(
                     f"<img src='images/da_{self.tratamiento.filebasename}/{i}.png' style=\"margin-bottom: 20px; border: 2px solid #000000; padding: 10px;\" width='98%'>" #cambio de 100 a 98 para indicar el borde
@@ -528,17 +536,14 @@ class DynamicAmplification:
         # Iterate through each image index for temporary HTML output
         for i in range(self.numImagesDynamic):
             if i != 0:
-                # self.salidaTemporalHtml.append(f"<img src='file://{self.proyectPath}/results/html/images/{self.tratamiento.filebasename}/{i}.png' width='100%'><hr>")
-                # Open image file in binary mode to read image data
+                # Open dynamic magnification images in binary format to read them
                 with open(
                     f"{self.proyectPath}/results/html/images/da_{self.tratamiento.filebasename}/{i}.png",
                     "rb",
                 ) as image_file:
-                    # Read image data from file
                     image_data = image_file.read()
                 
-                #if i != 1 :
-                
+                # if i != 1 :
                 #self.salidaTemporalHtml.append(f"<center><h3>{image_etiquetas[i-1]}</h3></center>")   fgsfdgdsfgsfdgsdgfsdfgsdfgsdfgsdfgsdgfsfdg
                 # Convert image data to Base64 format
                 image_base64 = base64.b64encode(image_data).decode("utf-8")
@@ -553,14 +558,14 @@ class DynamicAmplification:
         # Combine all HTML elements into a single string for temporary HTML output
         self.temporalhtmlText = " ".join(self.salidaTemporalHtml)
 
-        # Write the main HTML content to a text file
+        # Convert the main HTML to text file
         with open(self.archivo_html, "w") as archivo:
             archivo.write(
                 f"<html><head><title>Análisis {self.tratamiento.filebasename}</title></head><body>"
             )
             archivo.write(self.htmlText)
             archivo.write("</body></html>")
-        # Write the temporary HTML content to a separate text file
+        # Temporary HTML to separate text file
         with open(self.archivo_temporal_html, "w") as archivo:
             archivo.write(
                 f"<html><head><title>Análisis {self.tratamiento.filebasename}</title></head><body>"

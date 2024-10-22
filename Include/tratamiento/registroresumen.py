@@ -124,7 +124,7 @@ class RegistroResumen:
             dx=self.tratamiento.dt,
         )
         # PLOTS OF ACCELERATION, VELOCITY, AND DISPLACEMENT FROM THE ORIGINAL RECORD DATA.
-        fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 6))
+        fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 6), dpi=300)
         # Plot of the original acceleration
         ax1.plot(
             matriz_itiempo,
@@ -138,7 +138,7 @@ class RegistroResumen:
             "Acceleration" + " (" + self.tratamiento.unidades_aceleracion + ")"
         )
         ax1.set_title("Accelerogram")
-        ax1.legend()
+        ax1.legend(fontsize=8)
         ax1.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         # Plot of the original velocity
         ax2.plot(
@@ -151,7 +151,7 @@ class RegistroResumen:
         ax2.set_xlabel("Time (s)")
         ax2.set_ylabel("Velocity (cm/s)")
         ax2.set_title("Velocity")
-        ax2.legend()
+        ax2.legend(fontsize=8)
         ax2.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         # Plot of the original displacement
         ax3.plot(
@@ -164,7 +164,7 @@ class RegistroResumen:
         ax3.set_xlabel("Time (s)")
         ax3.set_ylabel("Displacement (cm)")
         ax3.set_title("Displacement")
-        ax3.legend()
+        ax3.legend(fontsize=8.5)
         ax3.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         plt.tight_layout()
     # SEISMIC RECORDS PROCESSING
@@ -262,7 +262,7 @@ class RegistroResumen:
         )
         # COMPARATIVE GRAPH BETWEEN THE ORIGINAL AND PROCESSED RECORD FOR: ACC, VEL AND DIS.
         # Original Acceleration vs Processed Acceleration
-        fig, (ax4, ax5, ax6) = plt.subplots(3, 1, figsize=(12, 6))
+        fig, (ax4, ax5, ax6) = plt.subplots(3, 1, figsize=(12, 6), dpi=300)
         ax4.plot(
             matriz_itiempo,
             aceleracionoriginal,
@@ -282,7 +282,7 @@ class RegistroResumen:
             "Acceleration" + " (" + self.tratamiento.unidades_aceleracion + ")"
         )
         ax4.set_title("Accelerogram")
-        ax4.legend()
+        ax4.legend(fontsize=8.5)
         ax4.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         # Original Velocity vs Processed Velocity
         ax5.plot(
@@ -302,7 +302,7 @@ class RegistroResumen:
         ax5.set_xlabel("Time (s)")
         ax5.set_ylabel("Velocity (cm/s)")
         ax5.set_title("Velocity")
-        ax5.legend()
+        ax5.legend(fontsize=8.5)
         ax5.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         # Original Displacement vs Processed Displacement
         ax6.plot(
@@ -322,11 +322,11 @@ class RegistroResumen:
         ax6.set_xlabel("Time (s)")
         ax6.set_ylabel("Displacement (cm)")
         ax6.set_title("Displacement")
-        ax6.legend()
+        ax6.legend(fontsize=8.5)
         ax6.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         plt.tight_layout()
         # 
-        fig, (ax7, ax8, ax9) = plt.subplots(3, 1, figsize=(12, 6))
+        fig, (ax7, ax8, ax9) = plt.subplots(3, 1, figsize=(12, 6), dpi=300)
         # GRAPH OF PROCESSED ACC. - PROCESSED VEL - PROCESSED DIS.
         # Processed acceleration
         ax7.plot(
@@ -341,7 +341,7 @@ class RegistroResumen:
             "Acceleration" + " (" + self.tratamiento.unidades_aceleracion + ")"
         )
         ax7.set_title("Accelerogram")
-        ax7.legend()
+        ax7.legend(fontsize=8)
         ax7.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         # Processed velocity
         ax8.plot(
@@ -354,7 +354,7 @@ class RegistroResumen:
         ax8.set_xlabel("Time (s)")
         ax8.set_ylabel("Velocity (cm/s)")
         ax8.set_title("Velocity")
-        ax8.legend()
+        ax8.legend(fontsize=8)
         ax8.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         # Processed displacement
         ax9.plot(
@@ -367,14 +367,14 @@ class RegistroResumen:
         ax9.set_xlabel("Time (s)")
         ax9.set_ylabel("Displacement (cm)")
         ax9.set_title("Displacement")
-        ax9.legend()
+        ax9.legend(fontsize=8.5)
         ax9.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
         plt.tight_layout()
         # GRAPHS OF FILTER GAIN
         # Filter gain graph for a high-pass 
         if self.tratamiento.type_filtro == "Highpass":
             w, h = sp.signal.freqz(bhigh, ahigh, worN=20000)
-            fig, ax10 = plt.subplots(figsize=(12,6))
+            fig, ax10 = plt.subplots(figsize=(12,6), dpi=300)
             ax10.plot ((fmuestreo * 0.5 / np.pi) * w, abs(h), color='royalblue')
             ax10.set_xlabel('Frequency (Hz)')
             ax10.set_ylabel('Gain')
@@ -385,7 +385,7 @@ class RegistroResumen:
         # Filter gain graph for a low-pass
         elif self.tratamiento.type_filtro == "Lowpass":
             w, h = sp.signal.freqz(blow, alow, worN=20000)
-            fig, ax10 = plt.subplots(figsize=(12,6))
+            fig, ax10 = plt.subplots(figsize=(12,6), dpi=300)
             ax10.plot ((fmuestreo * 0.5 / np.pi) * w, abs(h), color='royalblue')
             ax10.set_xlabel('Frequency (Hz)')
             ax10.set_ylabel('Gain')
@@ -396,7 +396,7 @@ class RegistroResumen:
         # Filter gain graph for a bandpass
         elif self.tratamiento.type_filtro == "Bandpass":
             w, h = sp.signal.freqz(b_bandpass, a_bandpass, worN=20000)
-            fig, ax10 = plt.subplots(figsize=(12,6))
+            fig, ax10 = plt.subplots(figsize=(12,6), dpi=300)
             ax10.plot ((fmuestreo * 0.5 / np.pi) * w, abs(h), color='royalblue')
             ax10.set_xlabel('Frequency (Hz)')
             ax10.set_ylabel('Gain')
@@ -406,7 +406,7 @@ class RegistroResumen:
             plt.tight_layout()
         # When unfiltered
         elif self.tratamiento.type_filtro == "None":
-            fig, ax10 = plt.subplots(figsize=(14.45, 6))
+            fig, ax10 = plt.subplots(figsize=(14.45, 6), dpi=300)
             ax10.set_xticks([])
             ax10.set_yticks([])
             ax10.set_xlabel('Frequency (Hz)')  
@@ -455,7 +455,7 @@ class RegistroResumen:
         a_duracion = aceleracionfiltrada[condicion_duracion]
         iaria_duracion = iaria_porcentaje[condicion_duracion]
         # Graph of Arias Intensity
-        fig, ax11 = plt.subplots(figsize=(12,6))
+        fig, ax11 = plt.subplots(figsize=(12,6), dpi=300)
         ax11.plot(matriz_itiempo, iaria_porcentaje, color='skyblue')
         ax11.plot(t_duracion, iaria_duracion, label='Significant Duration', color='royalblue')
         ax11.axvline(x=t_5, color='gray', linestyle='--', label = f'Time 5% = {t_5:.3f}')
@@ -463,7 +463,7 @@ class RegistroResumen:
         ax11.plot([], [], ' ', label=f'Dₛ (s) = {duracion_significativa:.2f}')
         ax11.set_xlabel('Time (s)')
         ax11.set_ylabel('Aria Intensity %')
-        ax11.legend()
+        ax11.legend(fontsize=8.5)
         ax11.grid(False)
         ax11.set_title('Aria Intensity')
         ax11.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
@@ -473,14 +473,14 @@ class RegistroResumen:
         valor_a_max = aceleracionfiltrada[indice_max_acceleration]
         valor_t_for_a_max = matriz_itiempo[indice_max_acceleration]
         # Comparative graph between processed acceleration and acceleration for significant duration over time
-        fig, ax12 = plt.subplots(figsize=(12,6))
+        fig, ax12 = plt.subplots(figsize=(12,6), dpi=300)
         ax12.plot(matriz_itiempo, aceleracionfiltrada, label='Corrected Acceleration', color='skyblue',linewidth=0.7)
         ax12.plot(t_duracion, a_duracion, label='Acceleration for Significant Duration', color='royalblue',linewidth=0.7)
         ax12.axvline(x=valor_t_for_a_max, color='lightgray', linestyle='--')
         ax12.scatter(valor_t_for_a_max, valor_a_max, color='black', marker='o', facecolor='none', label=f'Max. Acceleracion = {valor_a_max:.2f}' + ' (' + self.tratamiento.unidades_aceleracion + ')')
         ax12.set_xlabel('Time (s)')
         ax12.set_ylabel('Acceleration' + ' (' + self.tratamiento.unidades_aceleracion + ')')
-        ax12.legend()
+        ax12.legend(fontsize=8.5)
         ax12.grid(False)
         ax12.set_title('Corrected Acceleration and Acceleration for Significant Duration')
         ax12.set_xlim(min(matriz_itiempo), max(matriz_itiempo))
@@ -572,8 +572,8 @@ class RegistroResumen:
         
         # Plots
         hsize = 12
-        fig, (ax13, ax14) = plt.subplots(2, 1, figsize=(12, hsize))
-        fig.subplots_adjust(hspace=0.4)
+        fig, (ax13, ax14) = plt.subplots(2, 1, figsize=(12, hsize), dpi=300)
+        fig.subplots_adjust(hspace=2.5)
         # Fourier Spectrum Plot
         ax13.plot(
             frecuencias_positivas,
@@ -582,21 +582,23 @@ class RegistroResumen:
             linewidth=0.9,
             label="Fourier Spectrum",
         )
+        #ax13.set_xlim([np.log10(frecuencias_positivas[0]), np.log10(frecuencias_positivas[-1])])
         # Add vertical lines passing through the maximum amplitudes 
         # for each interval and their corresponding frequencies to the plot.
         for i, frecuencia in enumerate(frecuencia_amplitud_maxima_maximas):
             random_color = "gray"
             label_text = f"f{i+1} = {frecuencia:.2f} Hz"
             ax13.axvline(
-                x=frecuencia, color=random_color, linestyle="--", label=label_text, linewidth=1
-            )
+                x=frecuencia, color=random_color, linestyle="--", label=label_text, linewidth=1,
+            )#######################
         ax13.set_xlabel("Frecuency (Hz)")
         ax13.set_xscale("log")
-        ax13.legend(fontsize=9)
+        ax13.set_xlim([frecuencias_positivas.min(), frecuencias_positivas.max()])
+        ax13.legend(fontsize=8.5)
         if self.tratamiento.unidades_aceleracion == 'g':
             ax13.set_ylabel('Amplitude')
         else:
-            ax13.set_ylabel('Amplitude ')
+            ax13.set_ylabel('Amplitude')
         ax13.set_yticks([])
         ax13.set_title("Fourier Spectrum")
         # Bar chart of the frequency content analysis of the seismic record
@@ -632,15 +634,17 @@ class RegistroResumen:
                 fontsize=9,
                 color="black",
             )
-        ax14.axvline(x_90_prom, color='gray', linestyle='--', linewidth=1)
+        ax14.axvline(x_90_prom, color='lightgray', linestyle='--', linewidth=1)
+        max_sum_comb = float(max([acum + freq for acum, freq in zip(acum_amplitudesmax, frecuencia_amplitud_maxima_maximas)]))
+        ax14.set_ylim(0, max_sum_comb*1.25)
         y_lim_graph = ax14.get_ylim()
-        y_text = y_lim_graph[0] + 0.6 * (y_lim_graph[1] - y_lim_graph[0])
+        y_text = y_lim_graph[0] + 0.70 * (y_lim_graph[1] - y_lim_graph[0])
         ax14.text(x_90_prom, y_text, "Energy/Pulse >= 90%", rotation=90, va='bottom', ha='right', color='black',fontsize=8)
         ax14.set_xlabel("Windows")
         ax14.set_ylabel("% Percentage")
         ax14.set_title("Frequency and Amplitude Variation")
         ax14.set_xticks(x_histograma)
-        ax14.legend()
+        ax14.legend(fontsize=8.5)
         plt.tight_layout()
         
         # Calculate the maximum length
@@ -648,6 +652,8 @@ class RegistroResumen:
                 len(frecuencias_positivas),
                 len(aceleracionoriginal),
                 len(aceleracionfiltrada),
+                len(velocidadfiltrada),
+                len(desplazamientofiltrada),
                 len(iaria_porcentaje),
                 len(a_duracion),
                 len(amplitud_positivo),
@@ -665,6 +671,8 @@ class RegistroResumen:
         frecuencias_positivas_reporte = llenado(frecuencias_positivas, maxima_longitud)
         aceleracion_original_reporte = llenado(aceleracionoriginal, maxima_longitud)
         aceleracion_filtrada_reporte = llenado(aceleracionfiltrada, maxima_longitud)
+        velocidad_filtrada_reporte = llenado(velocidadfiltrada, maxima_longitud)
+        desplazamiento_filtrada_reporte = llenado(desplazamientofiltrada, maxima_longitud)
         iaria_porcentaje_reporte = llenado(iaria_porcentaje, maxima_longitud)
         a_duracion_reporte = llenado(a_duracion, maxima_longitud)
         amplitud_positivo_reporte = llenado(amplitud_positivo, maxima_longitud)
@@ -686,6 +694,8 @@ class RegistroResumen:
             "Corrected Acceleration ("
             + self.tratamiento.unidades_aceleracion
             + ")": aceleracion_filtrada_reporte,
+            "Corrected Velocity (cm/s)": velocidad_filtrada_reporte,
+            "Corrected Displacement (cm)": desplazamiento_filtrada_reporte,
             "Aria Intensity %": iaria_porcentaje_reporte,
             "Acceleration for Significant Duration ("
             + self.tratamiento.unidades_aceleracion
@@ -703,6 +713,7 @@ class RegistroResumen:
         # Exporting 'lista_exportar' dataframe to an Excel file specified by 'self.datos_informe',
         # with the sheet name 'Seismic Record Report' and without including the index.
         lista_exportar.to_excel(self.datos_informe, sheet_name='Seismic Record Report', index=False)
+        # Load the workbook and select the sheet
         print(frecuencias_90)
         print(energy_90)
         # Assigning the value of 'frecuencias_90' to 'self.tratamiento.fregistros_90'.
@@ -754,7 +765,7 @@ class RegistroResumen:
         for i in range(self.numImages):
             if i != 0:
                 # self.salidaTemporalHtml.append(f"<img src='file://{self.proyectPath}/results/html/images/{self.tratamiento.filebasename}/{i}.png' width='100%'><hr>")
-                # Open the image file in binary read mode
+                # Open the images of the treatment performed in this file to the seismic records in binary format to read them
                 with open(
                     f"{self.proyectPath}/results/html/images/{self.tratamiento.filebasename}/{i}.png",
                     "rb",
@@ -782,7 +793,7 @@ class RegistroResumen:
             )
             archivo.write(self.htmlText)
             archivo.write("</body></html>")
-        # Write temporal HTML content to file
+        # Convert HTML temporal content to file
         with open(self.archivo_temporal_html, "w", encoding="utf-8") as archivo:
             archivo.write(
                 f"<html><head><title>Análisis {self.tratamiento.filebasename}</title></head><body>"
@@ -805,7 +816,7 @@ class RegistroResumen:
             )
             print(f"Archivo PDF guardado en: {self.archivo_pdf}")
         except Exception as e:
-            # Handle PDF conversion error
+            # Displays an error message when converting to pdf to notify the user
             print(f"Error al convertir a PDF: {str(e)}")
     def getEtiquetaFourier(self):
         # Return Fourier amplitude label based on units of acceleration

@@ -15,19 +15,19 @@ class ConfigureSummarySettingsDialogo(tk.simpledialog.Dialog):
         super().__init__(parent, title)
 
     def body(self, master):
-        # Create labels and entry widgets for user input
+        # Create the labels for entering frequency intervals
         tk.Label(master, text="Frequency Intervals:").grid(row=0, column=0)
         self.num_divisiones_frequ_entry = tk.Entry(master)
         self.num_divisiones_frequ_entry.grid(row=0, column=1)
         tk.Label(master, text="Example: 5").grid(row=0, column=2, sticky="w")
 
-        # Create labels and entry widgets for user input
+        # Create the labels for entering E. Dynamic Magnification Intervals
         tk.Label(master, text="E. Dynamic M. Intervals:").grid(row=1, column=0)
         self.num_divisiones_ELAS_entry = tk.Entry(master)
         self.num_divisiones_ELAS_entry.grid(row=1, column=1)
         tk.Label(master, text="Example: 5").grid(row=1, column=2, sticky="w")
 
-        # Create labels and entry widgets for user input
+        # Create the labels for entering I. Dynamic Magnification Intervals
         tk.Label(master, text="Dynamic M. Intervals:").grid(row=2, column=0)
         self.num_divisiones_INELAS_entry = tk.Entry(master)
         self.num_divisiones_INELAS_entry.grid(row=2, column=1)
@@ -48,16 +48,27 @@ class ConfigureSummarySettingsDialogo(tk.simpledialog.Dialog):
 
         # If no validation errors, convert and set the values to instance variables
         if con_errores == False:
-            print('num_divisiones_frequ_entry', self.num_divisiones_frequ_entry.get())
-            self.num_divisiones_frequ.set( int( self.num_divisiones_frequ_entry.get() ))
+            if (
+                int( self.num_divisiones_frequ_entry.get() ) != 0 and 
+                int( self.num_divisiones_ELAS_entry.get() ) != 0 and 
+                int( self.num_divisiones_INELAS_entry.get() )!= 0
+            ): 
+                    
+                print('num_divisiones_frequ_entry', self.num_divisiones_frequ_entry.get())
+                self.num_divisiones_frequ.set( int( self.num_divisiones_frequ_entry.get() ))
 
-            print('num_divisiones_ELAS_entry', self.num_divisiones_ELAS_entry.get())
-            self.num_divisiones_ELAS.set( int( self.num_divisiones_ELAS_entry.get() ))
+                print('num_divisiones_ELAS_entry', self.num_divisiones_ELAS_entry.get())
+                self.num_divisiones_ELAS.set( int( self.num_divisiones_ELAS_entry.get() ))
 
-            print('num_divisiones_INELAS', self.num_divisiones_INELAS_entry.get())
-            self.num_divisiones_INELAS.set( int( self.num_divisiones_INELAS_entry.get() ))
+                print('num_divisiones_INELAS', self.num_divisiones_INELAS_entry.get())
+                self.num_divisiones_INELAS.set( int( self.num_divisiones_INELAS_entry.get() ))
 
-            self.resultDialog.set(True)
+                self.resultDialog.set(True)
+            else:         
+                messagebox.showinfo(
+                        "Alert", 'All data must be non-zero'
+                    )  
+            
         else:
             # Display message if there are validation errors
             messagebox.showinfo(
